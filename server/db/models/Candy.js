@@ -20,7 +20,7 @@ module.exports = db.define("candy", {
     },
   },
   quantity: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
     validate: {
       max: 10,
       min: 0,
