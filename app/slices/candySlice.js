@@ -17,10 +17,10 @@ export const fetchCandyAsync = createAsyncThunk(
 
 export const updateCandyAsync = createAsyncThunk(
   "candy/update",
-  async (candyId, updatedCandy) => {
+  async ({ candyId, quantity }) => {
     const response = await axios.put(
       `http://localhost:1337/api/candies/${candyId}`,
-      updatedCandy
+      { quantity }
     );
     return response.data;
   }

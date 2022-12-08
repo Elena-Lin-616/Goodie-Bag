@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchCandyAsync } from "../store";
+import CandyForm from "./CandyForm";
 function CandyDetail() {
   const dispatch = useDispatch();
   const candy = useSelector((state) => state.candy);
@@ -18,8 +19,9 @@ function CandyDetail() {
       <p> {candy.name}</p>
       <h3>Description</h3>
       <p>{candy.description}</p>
-      <h3>Quantity</h3>
-      <p>{candy.quantity}</p>
+      {/* <h3>Quantity</h3>
+      <p>{candy.quantity}</p> */}
+      <CandyForm quantity={candy.quantity} candyId={candyId} />
     </div>
   );
 }

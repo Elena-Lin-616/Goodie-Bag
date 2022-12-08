@@ -17,6 +17,9 @@ exports.getCandy = catchAsync(async (req, res, next) => {
 });
 
 exports.updateCandy = catchAsync(async (req, res, next) => {
+  console.log(req);
+  console.log("LINE 20 Params", req.params);
+  console.log(req.body);
   const [updatedCount, updatedCandy] = await Candy.update(req.body, {
     where: {
       id: req.params.candyId,
