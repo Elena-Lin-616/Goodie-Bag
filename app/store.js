@@ -5,6 +5,7 @@ import {
   candyReducer,
   fetchCandyAsync,
   updateCandyAsync,
+  deleteCandyAsync,
 } from "./slices/candySlice";
 export const store = configureStore({
   reducer: {
@@ -15,4 +16,4 @@ export const store = configureStore({
 
 export { fetchAllCandiesAsync };
 
-export { fetchCandyAsync, updateCandyAsync };
+export { fetchCandyAsync, updateCandyAsync, deleteCandyAsync };

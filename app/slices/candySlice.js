@@ -26,6 +26,14 @@ export const updateCandyAsync = createAsyncThunk(
   }
 );
 
+export const deleteCandyAsync = createAsyncThunk(
+  "candy/delete",
+  async (candyId) => {
+    await axios.delete(`http://localhost:1337/api/candies/${candyId}`);
+    return candyId;
+  }
+);
+
 const candySlice = createSlice({
   name: "candy",
   initialState: {},
@@ -36,6 +44,9 @@ const candySlice = createSlice({
     });
     builder.addCase(updateCandyAsync.fulfilled, (state, action) => {
       return action.payload;
+    });
+    builder.addCase(deleteCandyAsync.fulfilled, (state, action) => {
+      return {};
     });
   },
 });
