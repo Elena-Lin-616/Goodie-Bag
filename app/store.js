@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { candiesReducer, fetchAllCandiesAsync } from "./slices/candiesSlice";
 
-import { candyReducer, fetchCandyAsync } from "./slices/candySlice";
+import {
+  candyReducer,
+  fetchCandyAsync,
+  updateCandyAsync,
+} from "./slices/candySlice";
 export const store = configureStore({
   reducer: {
     candies: candiesReducer,
@@ -11,4 +15,4 @@ export const store = configureStore({
 
 export { fetchAllCandiesAsync };
 
-export { fetchCandyAsync };
+export { fetchCandyAsync, updateCandyAsync };

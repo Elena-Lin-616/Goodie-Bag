@@ -15,12 +15,26 @@ export const fetchCandyAsync = createAsyncThunk(
   }
 );
 
+export const updateCandyAsync = createAsyncThunk(
+  "candy/update",
+  async (candyId, updatedCandy) => {
+    const response = await axios.put(
+      `http://localhost:1337/api/candies/${candyId}`,
+      updatedCandy
+    );
+    return response.data;
+  }
+);
+
 const candySlice = createSlice({
   name: "candy",
   initialState: {},
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchCandyAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
+    builder.addCase(updateCandyAsync.fulfilled, (state, action) => {
       return action.payload;
     });
   },
