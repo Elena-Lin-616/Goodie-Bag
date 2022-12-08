@@ -21,6 +21,7 @@ exports.updateCandy = catchAsync(async (req, res, next) => {
     where: {
       id: req.params.candyId,
     },
+    returning: true,
   });
   res.json(updatedCandy[0]);
 });
