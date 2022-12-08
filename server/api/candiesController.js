@@ -34,3 +34,13 @@ exports.addNewCandy = catchAsync(async (req, res, next) => {
   await candy.save();
   res.json(candy);
 });
+
+exports.deleteCandy = catchAsync(async (req, res, next) => {
+  // test is the number of nums have be delete
+  const test = await Candy.destroy({
+    where: {
+      id: req.params.candyId,
+    },
+  });
+  res.json(test);
+});
