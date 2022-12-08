@@ -1,28 +1,26 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { fetchAllCandiesAsync } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import CandyItem from "./CandyDetail";
+import { Link } from "react-router-dom";
 function CandiesList() {
   const dispatch = useDispatch();
   const candies = useSelector((state) => state.candies);
 
   useEffect(() => {
-    dispatch(fetchAllCandiesAsync);
+    dispatch(fetchAllCandiesAsync());
   }, []);
 
   const renderedCandiesList = candies.map((candy) => {
     return (
       <div key={candy.id}>
-        <img alt="candy image" src={candy.imageUrl} />
-        <h3>Candy name:</h3>
-        <p> {candy.name}</p>
-        <h3>Description</h3>
-        <p>{candy.description}</p>
-        <h3>Quantity</h3>
-        <p>{candy.quantity}</p>
+        <Link to={`/candies/${candy.id}`}>
+          <h3>Candy: {candy.name}</h3>
+        </Link>
       </div>
     );
   });
-  return <div>{renderedCandiesList}</div>;
+  return <Fragment>{renderedCandiesList}</Fragment>;
 }
 
 export default CandiesList;

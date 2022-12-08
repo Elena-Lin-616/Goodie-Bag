@@ -1,16 +1,18 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import CandiesList from "./components/CandiesList";
+import CandyDetail from "./components/CandyDetail";
 import Navbar from "./components/NavBar";
+import HomePage from "./pages/Home";
 const Root = () => {
   return (
     <div>
       <Navbar />
       <main>
-        <h1>Welcome to the Goodie Bag!</h1>
-        <p>What a nice home page for your goodies!</p>
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/candies" element={<CandiesList />} />
+          <Route path="/candies/:candyId" element={<CandyDetail />} />
         </Routes>
       </main>
     </div>

@@ -4,8 +4,12 @@ import axios from "axios";
 export const fetchAllCandiesAsync = createAsyncThunk(
   "candies/fetchAll",
   async () => {
-    const response = await axios.get("http://localhost:1337/api/candies");
-    return response.data;
+    try {
+      const response = await axios.get("http://localhost:1337/api/candies");
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
