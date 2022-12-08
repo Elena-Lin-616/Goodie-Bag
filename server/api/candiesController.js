@@ -28,3 +28,9 @@ exports.updateCandy = catchAsync(async (req, res, next) => {
   });
   res.json(updatedCandy[0]);
 });
+
+exports.addNewCandy = catchAsync(async (req, res, next) => {
+  const candy = await Candy.create(req.body);
+  await candy.save();
+  res.json(candy);
+});

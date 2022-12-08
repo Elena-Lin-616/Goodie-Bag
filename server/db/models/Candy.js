@@ -13,7 +13,7 @@ module.exports = db.define("candy", {
     },
   },
   description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false,
     validate: {
       notEmpty: true,

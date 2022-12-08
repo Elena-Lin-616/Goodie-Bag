@@ -9,4 +9,6 @@ router.get("/:candyId", candiesController.getCandy);
 
 // PUT api/candies/candyId
 router.put("/:candyId", candiesController.updateCandy);
+
+router.post("/", candiesController.addNewCandy);
 module.exports = router;
