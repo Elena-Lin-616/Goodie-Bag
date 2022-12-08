@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { addNewCandyAsync } from "../store";
+import { useNavigate } from "react-router-dom";
 function AddCandyForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -24,9 +28,18 @@ function AddCandyForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(
+      addNewCandyAsync({
+        name,
+        description,
+        quantity,
+        imageUrl,
+      })
+    );
+    navigate("/candies");
   };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Name:</label>
         <input type="text" value={name} onChange={handleNameInput}></input>
@@ -53,6 +66,7 @@ function AddCandyForm() {
         <label>Description:</label>
         <textarea value={description} onChange={handleDescriptionInput} />
       </div>
+      <button type="submit">Add candy</button>
     </form>
   );
 }
