@@ -12,6 +12,16 @@ export const fetchAllCandiesAsync = createAsyncThunk(
     }
   }
 );
+export const addNewCandyAsync = createAsyncThunk(
+  "candies/add",
+  async (candy) => {
+    const response = await axios.post(
+      "http://localhost:1337/api/candies",
+      candy
+    );
+    return response.data;
+  }
+);
 
 const candiesSlice = createSlice({
   name: "candies",
@@ -20,6 +30,9 @@ const candiesSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(fetchAllCandiesAsync.fulfilled, (state, action) => {
       return action.payload;
+    });
+    builder.addCase(addNewCandyAsync.fulfilled, (state, action) => {
+      state.push(action.payload);
     });
   },
 });
